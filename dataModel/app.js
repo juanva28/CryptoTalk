@@ -62,6 +62,7 @@ app.use('/users', users);
 
 //Set Ethereum api petition
 var bot = schedule.scheduleJob('1 * * * *',() => { require('./apiPetitions/ethereum'); });
+var bot = schedule.scheduleJob('1 * * * *',() => { require('./apiPetitions/googleTrends'); });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

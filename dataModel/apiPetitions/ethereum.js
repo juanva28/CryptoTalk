@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-const dataBase = 'cryptotalk';
 const Ether = require('../models/Ether');
-const dbUri = process.env.MONGODB_URI || `mongodb://localhost/${dataBase}`;
 global.fetch = require('node-fetch');
 var moment = require('moment');
 
