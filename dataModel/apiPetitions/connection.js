@@ -6,5 +6,9 @@ global.fetch = require('node-fetch');
 mongoose.connect(dbUri, {useMongoClient: true})
   .then (() => {
     console.log(`connected to ${dataBase}`);
+    setInterval(() => {
+      require('./googleTrends');
+      console.log('hola');
+    },1000*60);
   }
 );

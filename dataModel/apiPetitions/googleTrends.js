@@ -1,45 +1,66 @@
-const googleTrends = require('google-trends-api');
 const mongoose = require('mongoose');
-const Google = require('../models/Googletrends');
-
-var startDate = new Date();
-var endDate = new Date();
-var nowHour = startDate.getHours();
-startDate.setHours(nowHour-1);
+const googleTrends = require('google-trends-api');
+const dataBase = 'cryptotalk';
+const dbUri = process.env.MONGODB_URI || `mongodb://localhost/${dataBase}`;
+const Sent = require('../models/Sentiment');
+const startDate = new Date();
+const endDate = new Date();
+const nowHour = startDate.getHours();
+startDate.setHours(nowHour - 1);
 endDate.setHours(nowHour);
 
-googleTrends.interestOverTime({keyword: "Ethereum", startTime: startDate, endTime: endDate, granularTimeResolution: true})
-  .then(function(results){
-    let result = JSON.parse(results);
-    let processData = result.default.timelineData.map(e => {
-      return {time: e.formattedTime, value: e.value[0]};
-    });
-    //time and value formating
-    var str = processData[0].time;
-    var day = str.split(',')[0];
-    var hour = (parseInt(str.split(',')[1].split(' ')[3].split(':')[0])+6)+":00";
-    if(hour = "24:00"){hour = `${day} 00:00`;}
-    var date =`${day} ${hour}`;
-    var valueArray = [];
-    for(var i = 0; i <processData.length; i++){valueArray.push(z[i].value);}
-    function add(a, b) {return a + b;}
-    var value = (valueArray.reduce(add, 0))/60;
 
-    //saving new data
-    const newBlock = {
-    date: date,
-    day: day,
-    hour: hour,
-    value: value,
-  };
-
-  const googleUpdate = new Google(newBlock);
-
-  googleUpdate.save(function (err) {
-    if (err) return handleError(err);
-  });
-
+googleTrends.interestOverTime({
+  keyword: ['buy ethereum', 'sell ethereum'],
+  startTime: startDate,
+  endTime: endDate,
+  granularTimeResolution: true
   })
-  .catch(function(err){
-    console.error('Oh no there was an error', err);
+  .then(dataArray => {
+    const processData = JSON.parse(dataArray).default.timelineData.map(e => {
+      return {
+        time: e.formattedTime,
+        value: e.value
+      };
+    });
+
+      function timeSpan (minutes){
+      var valueBuyArray = [];
+      var valueSellArray = [];
+      for (var i = processData.length-1; processData.length - (minutes+1) < i; i--){
+         valueBuyArray.push(processData[i].value[0]);
+         valueSellArray.push(processData[i].value[1]);
+       }
+      function add(a, b) {return a + b;}
+      var valueBuy = (valueBuyArray.reduce(add, 0)) / minutes;
+      var valueSell = (valueSellArray.reduce(add, 0)) / minutes;
+
+      return [parseFloat(Math.round(valueBuy * 100) / 100).toFixed(2),parseFloat(Math.round(valueSell * 100) / 100).toFixed(2)];
+    }
+    var time = processData[58].time;
+    var lastMinute = processData[58].value;
+    var last5Minutes = timeSpan(4);
+    var last15Minutes = timeSpan(14);
+    var last30Minutes = timeSpan(29);
+    var lastHour = timeSpan(59);
+    console.log(lastMinute, last5Minutes, last15Minutes, last30Minutes, lastHour);
+
+    const liveSentiment = {
+      time: time,
+      minutes1: lastMinute,
+      minutes5: last5Minutes,
+      minutes15: last15Minutes,
+      minutes30: last30Minutes,
+      minutes60: lastHour
+    };
+
+    const lastUpdate = new Sent(liveSentiment);
+
+    lastUpdate.save()
+      .then((liveSentiment) => {
+        console.log(`Nuevo bloque creado ${newBlock}`);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
   });

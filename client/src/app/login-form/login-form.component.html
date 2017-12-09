@@ -14,23 +14,10 @@
 </div>
 
 <div *ngIf="auth.user">
-  <script src="node_modules/chart.js/Chart.min.js"></script>
-  <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
-
-  <h2>Welcome {{auth.user.username}}</h2>
 
 
-  <canvas baseChart width="400" height="100"
-            [datasets]="lineChartData"
-            [labels]="lineChartLabels"
-            [options]="lineChartOptions"
-            [colors]="lineChartColors"
-            [legend]="lineChartLegend"
-            [chartType]="lineChartType"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)">
-  </canvas>
 
   <a href="#" (click)="logout()">Logout {{auth.user.username}}</a>
 
 </div>
+  <app-datamodel></app-datamodel>
