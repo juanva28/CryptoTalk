@@ -8,6 +8,7 @@ import { AuthService } from '../services/auth.service';
 import { DataService } from '../services/data.service';
 import { ChartsModule } from 'ng2-charts';
 import { DatamodelComponent } from './datamodel/datamodel.component';
+import { BarchartComponent } from './barchart/barchart.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { DatamodelComponent } from './datamodel/datamodel.component';
     AppComponent,
     LoginFormComponent,
     DatamodelComponent,
+    BarchartComponent,
   ],
   imports: [
     BrowserModule,

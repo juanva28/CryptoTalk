@@ -9,16 +9,17 @@ import {DataService} from '../../services/data.service';
 export class DatamodelComponent implements OnInit {
 
 
-  constructor(private dataSource : DataService) {
-
-  }
+  constructor(private dataSource : DataService) {}
 
   ngOnInit() {
     this.dataSource.getData("speculationData")
     .subscribe(data => {
       this.lineChartLabels = data.map(e => e.hour);
-      this.lineChartData = [{ data: data.map(e => Math.round(e.googleValue)), label: "googleValue"}]
-      console.log(this.lineChartLabels);
+      this.lineChartData = [
+        { data: data.map(e => Math.round(e.googleValue)), label: "googleValue", yAxisID: 'yAxis2'},
+        { data: data.map(e => Math.round(e.ethereumValue)), label: "ethereumValue", yAxisID: 'yAxis1'}
+      ]
+
     })
   }
 
@@ -26,10 +27,29 @@ export class DatamodelComponent implements OnInit {
 
 
   lineChartLabels: Array<any>;
+
   lineChartOptions: any = {
+    scales: {
+        yAxes: [
+            {
+                id: 'yAxis1',
+                position: 'left'
+            },
+            {
+                id: 'yAxis2',
+                position: 'right',
+                // ticks: {
+                //     max : 100,
+                //     min: 50,
+                //     },
+                scaleShowHorizontalLines: false,
+            }
+        ]
+    },
     scaleShowVerticalLines: false,
     responsive: true
   };
+
   lineChartColors: Array<any> = [
     { // grey
       backgroundColor: 'rgba(177,219,246,0.2)',

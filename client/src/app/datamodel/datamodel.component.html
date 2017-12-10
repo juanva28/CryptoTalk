@@ -2,8 +2,8 @@
 <script src="node_modules/chart.js/Chart.min.js"></script>
 <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
 
-<div style="width: 50%" *ngIf="lineChartData">
-    <canvas baseChart width="400" height="400"
+<div style="width: 60%" *ngIf="lineChartData">
+    <canvas baseChart
                 [datasets]="lineChartData"
                 [labels]="lineChartLabels"
                 [options]="lineChartOptions"

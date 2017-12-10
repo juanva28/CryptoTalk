@@ -1,0 +1,27 @@
+
+<script src="node_modules/chart.js/Chart.min.js"></script>
+<script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+
+    <div style="width: 50%" *ngIf="barChartData">
+
+<h2>Sentiment Analysis</h2>
+
+
+<select [(ngModel)]="timespan">
+    <option value=1 >Last minute</option>
+    <option value=5 >Last five minuets</option>
+    <option value=15>Last fifteen minuets</option>
+    <option value=30>Last thirty minuets</option>
+    <option value=60>Last hour</option>
+</select>
+
+
+      <canvas baseChart
+              [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                chartType="horizontalBar"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+    </div>

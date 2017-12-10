@@ -35,7 +35,7 @@ googleTrends.interestOverTime({
       var valueBuy = (valueBuyArray.reduce(add, 0)) / minutes;
       var valueSell = (valueSellArray.reduce(add, 0)) / minutes;
 
-      return [parseFloat(Math.round(valueBuy * 100) / 100).toFixed(2),parseFloat(Math.round(valueSell * 100) / 100).toFixed(2)];
+      return [parseInt(valueBuy) , parseInt(valueSell)];
     }
     var time = processData[58].time;
     var lastMinute = processData[58].value;
