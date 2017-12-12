@@ -9,6 +9,8 @@ import { DataService } from '../services/data.service';
 import { ChartsModule } from 'ng2-charts';
 import { DatamodelComponent } from './datamodel/datamodel.component';
 import { BarchartComponent } from './barchart/barchart.component';
+import { ControlDeskComponent } from './control-desk/control-desk.component';
+import { BitcoinChartComponent } from './bitcoin-chart/bitcoin-chart.component';
 
 
 @NgModule({
@@ -17,6 +19,8 @@ import { BarchartComponent } from './barchart/barchart.component';
     LoginFormComponent,
     DatamodelComponent,
     BarchartComponent,
+    ControlDeskComponent,
+    BitcoinChartComponent,
   ],
   imports: [
     BrowserModule,

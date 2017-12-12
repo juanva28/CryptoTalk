@@ -12,6 +12,9 @@
     <label> Password </label>
     <input type="password" [(ngModel)]="password" name="password"/>
     <br>
+    <label> E-mail </label>
+    <input type="email" [(ngModel)]="email" name="email"/>
+    <br>
     <button (click)="login(username,password)"> login </button>
     <button (click)="signup(username,password)"> signup </button>
   </form>
@@ -27,6 +30,9 @@
 
   <app-datamodel></app-datamodel>
   <app-barchart></app-barchart>
+  <app-control-desk></app-control-desk>
+  <app-bitcoin-chart></app-bitcoin-chart>
   <a href="#" (click)="logout()">Logout {{auth.user.username}}</a>
+
 
 </div>

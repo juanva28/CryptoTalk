@@ -1,13 +1,15 @@
+require('dotenv').config();
 const express = require('express');
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const authRoutes = express.Router();
+const nodemailer = require('nodemailer');
 
 authRoutes.post('/signup', (req, res, next) => {
-  const {username, password} = req.body;
-
-  if (!username || !password) {
+  const {username, password, email} = req.body;
+  console.log(req.body);
+  if (!username || !password || !email) {
     res.status(400).json({ message: 'Provide username and password' });
     return;
   }
@@ -24,12 +26,41 @@ authRoutes.post('/signup', (req, res, next) => {
 
     const theUser = new User({
       username,
-      password: hashPass
+      password: hashPass,
+      email,
     });
+
     return theUser.save();
   })
   .then(newUser => {
     console.log(newUser);
+    console.log(process.env);
+    console.log(process.env.ADMIN_MAIL);
+    console.log(process.env.ADMIN_PASS);
+    var transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth: {
+          user:process.env.ADMIN_MAIL,
+          pass:process.env.ADMIN_PASS
+        }
+      });
+
+    var text = `Welcome to CryptoTalk ${newUser.username}! You successfully created an account and can now begin to track crypto speculation thorugh our analytics. Good luck with your investments! For any additional information or questions please reach us out at cryptotalk.customerservice@gmail.com.`;
+
+    var mailOptions = {
+      from: process.env.ADMIN_MAIL,
+      to: newUser.email,
+      subject: 'TITULO DEL CORREO',
+      text: text
+    };
+
+    transporter.sendMail(mailOptions, (err, info) => {
+        return err ? console.log(err) : console.log(info);
+      });
+
+    console.log(newUser);
+
+
     req.login(newUser, (err) => {
       if (err) {
         console.log(err);

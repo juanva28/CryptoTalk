@@ -14,7 +14,7 @@ export class DatamodelComponent implements OnInit {
   ngOnInit() {
     this.dataSource.getData("speculationData")
     .subscribe(data => {
-      this.lineChartLabels = data.map(e => e.hour);
+      this.lineChartLabels = data.map(e => e.hour).reverse();
       this.lineChartData = [
         { data: data.map(e => Math.round(e.googleValue)), label: "googleValue", yAxisID: 'yAxis2'},
         { data: data.map(e => Math.round(e.ethereumValue)), label: "ethereumValue", yAxisID: 'yAxis1'}

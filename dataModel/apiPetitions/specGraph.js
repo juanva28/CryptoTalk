@@ -20,6 +20,8 @@ const promise2 = googleTrends.interestOverTime({
   granularTimeResolution: true
 });
 
+
+
 Promise.all([promise1, promise2])
   .then(dataArray => {
     const processData = JSON.parse(dataArray[1]).default.timelineData.map(e => {
@@ -30,7 +32,7 @@ Promise.all([promise1, promise2])
     });
     var str = processData[0].time;
     var day = str.split(',')[0];
-    var hour = (parseInt(str.split(',')[1].split(' ')[3].split(':')[0]) + 6) + ":00";
+    var hour = (parseInt(str.split(',')[1].split(' ')[3].split(':')[0]) + 7) + ":00";
     var date = `${day} ${hour}`;
     var valueArray = [];
     for (var i = 0; i < processData.length; i++) {
@@ -47,7 +49,7 @@ Promise.all([promise1, promise2])
       day: day,
       hour: hour,
       googleValue: value,
-      ethereumValue:dataArray[0][1].volumefrom,
+      ethereumValue:dataArray[0][0].volumefrom,
     };
     console.log(newBlock);
     const blockUpdate = new Spec(newBlock);

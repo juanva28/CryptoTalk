@@ -8,10 +8,13 @@ import {AuthService} from '../../services/auth.service';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent{
+username: string;
+email: string;
+password: string;
 
   constructor(private auth:AuthService) { }
-  signup(username, password){
-    this.auth.signup(username,password).subscribe();
+  signup(){
+    this.auth.signup(this.username,this.password,this.email).subscribe();
   }
 
   login(username, password){

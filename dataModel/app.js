@@ -15,7 +15,7 @@ const cc = require('cryptocompare');
 const schedule = require('node-schedule');
 const app = express();
 require('./apiPetitions/connection');
-
+require('./email/emailNotifications');
 
 const whitelist = [
     'http://localhost:4200',
@@ -49,6 +49,9 @@ app.use('/api/auth', auth);
 //Set Ethereum api & googleTrends api petition
 const bot = schedule.scheduleJob('1 * * * *',() => {
   require('./apiPetitions/specGraph');
+});
+const bot1 = schedule.scheduleJob('59 * * * *',() => {
+  require('./apiPetitions/bitcoinCompare');
 });
 
 // catch 404 and forward to error handler
