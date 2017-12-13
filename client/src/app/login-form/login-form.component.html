@@ -2,7 +2,7 @@
 
 
 <div class="background">
-
+<canvas id="canvas"></canvas>
 
 <h1 class="main-title">CRYPTO <span class="thin">TALK</span></h1>
   <form class="login">
@@ -12,11 +12,8 @@
     <label> Password </label>
     <input type="password" [(ngModel)]="password" name="password"/>
     <br>
-    <label> E-mail </label>
-    <input type="email" [(ngModel)]="email" name="email"/>
-    <br>
-    <button (click)="login(username,password)"> login </button>
-    <button (click)="signup(username,password)"> signup </button>
+    <button (click)="login(username,password)"> login </button><span>or <a [routerLink]= '["/signup"]'>Sign-up</a>Sign-up if you don't have an account</span>
+
   </form>
   <p class="error"> {{ error }} </p>
 
@@ -27,12 +24,11 @@
 
 <div *ngIf="auth.user">
 
-
+<a [routerLink]= '["/userProfile"]'> Your Profile</a>
   <app-datamodel></app-datamodel>
   <app-barchart></app-barchart>
   <app-control-desk></app-control-desk>
   <app-bitcoin-chart></app-bitcoin-chart>
   <a href="#" (click)="logout()">Logout {{auth.user.username}}</a>
-
 
 </div>

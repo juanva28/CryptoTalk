@@ -23,7 +23,6 @@ export class AuthService {
 
   handleError(e) {
     const error_message = e.json().message;
-    console.error(error_message);
     return Observable.throw(e.json().message);
   }
 
@@ -43,6 +42,14 @@ export class AuthService {
 
   login(username:string, password:string) {
     return this.http.post(`${BASE_URL}/login`, {username, password}, this.options)
+      .map(res => res.json())
+      .map(user => this.handleUser(user))
+      .catch(this.handleError);
+  }
+
+  update(user:object) {
+    return this.http.post(`${BASE_DOMAIN}/userUpdate`, {
+      user:user}, this.options)
       .map(res => res.json())
       .map(user => this.handleUser(user))
       .catch(this.handleError);

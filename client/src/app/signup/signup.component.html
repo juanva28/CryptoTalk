@@ -1,0 +1,24 @@
+<div *ngIf="!auth.user">
+
+
+<div class="background">
+
+
+<h1 class="main-title">CRYPTO <span class="thin">TALK</span></h1>
+  <form class="login">
+    <label> Username </label>
+    <input type="text" [(ngModel)]="username" name="username"/>
+    <br>
+    <label> Password </label>
+    <input type="password" [(ngModel)]="password" name="password"/>
+    <br>
+    <label> E-mail </label>
+    <input type="email" [(ngModel)]="email" name="email"/>
+    <br>
+    <button (click)="signup(username,password)"> signup </button>
+  </form>
+  <p class="error"> {{ error }} </p>
+
+</div>
+
+</div>

@@ -1,0 +1,22 @@
+<div *ngIf="user">
+
+  <form class="profile">
+    <label> Username </label>
+    <input type="text" [(ngModel)]="user.username" name="username"/>
+    <br>
+    <label> E-mail </label>
+    <input type="email" [(ngModel)]="user.email" name="email"/>
+    <br>
+    <label> Relevant percentage spread between google search volume (speculative movement) and ethreum transaction voluem: </label>
+    <input type="number" [(ngModel)]="user.opportinityPercentage" name="opportinityPercentage"/>
+    <br>
+    <label> Relevant spread between buy and sell sentiment analytics: </label>
+    <input type="number" [(ngModel)]="user.sentimentSpread" name="sentimentSpread"/>
+    <br>
+    <button (click)="update()"> Update </button>
+  </form>
+  <p class="error"> {{ error }} </p>
+</div>
+
+
+<a [routerLink]= '["/login"]'> Back to home page</a>

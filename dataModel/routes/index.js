@@ -3,7 +3,7 @@ const router = express.Router();
 const Sent = require('../models/Sentiment');
 const Spec = require('../models/Speculation');
 const Btc = require('../models/Bitcoin');
-
+const User = require('../models/User');
 const passport = require('passport');
 const {
   ensureLoggedIn,
@@ -38,5 +38,21 @@ router.get('/bitcoinData', (req, res, next) => {
         .then(bitcoinData => res.status(200).json(bitcoinData))
         .catch( e => res.status(500).json(e));
 });
+
+router.post('/userUpdate', (req, res, next) => {
+
+User.findByIdAndUpdate({"_id":req.body.user._id},
+{
+  username: req.body.user.username,
+  email: req.body.user.email,
+  opportinityPercentage: req.body.user.opportinityPercentage,
+  sentimentSpread: req.body.user.sentimentSpread
+}
+ ,{ new:true })
+ .then(
+  user => res.status(200).json(user)
+);
+});
+
 
 module.exports = router;

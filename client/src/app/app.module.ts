@@ -11,6 +11,12 @@ import { DatamodelComponent } from './datamodel/datamodel.component';
 import { BarchartComponent } from './barchart/barchart.component';
 import { ControlDeskComponent } from './control-desk/control-desk.component';
 import { BitcoinChartComponent } from './bitcoin-chart/bitcoin-chart.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { SignupComponent } from './signup/signup.component';
+
+import {routes} from './routes';
 
 
 @NgModule({
@@ -21,12 +27,15 @@ import { BitcoinChartComponent } from './bitcoin-chart/bitcoin-chart.component';
     BarchartComponent,
     ControlDeskComponent,
     BitcoinChartComponent,
+    UserProfileComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    ChartsModule
+    ChartsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [AuthService, DataService],
   bootstrap: [AppComponent]
