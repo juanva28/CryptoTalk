@@ -33,10 +33,7 @@ authRoutes.post('/signup', (req, res, next) => {
     return theUser.save();
   })
   .then(newUser => {
-    console.log(newUser);
-    console.log(process.env);
-    console.log(process.env.ADMIN_MAIL);
-    console.log(process.env.ADMIN_PASS);
+  
     var transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
@@ -50,7 +47,7 @@ authRoutes.post('/signup', (req, res, next) => {
     var mailOptions = {
       from: process.env.ADMIN_MAIL,
       to: newUser.email,
-      subject: 'TITULO DEL CORREO',
+      subject: 'Welcome to CryptoTalk',
       text: text
     };
 

@@ -53,6 +53,9 @@ const bot = schedule.scheduleJob('1 * * * *',() => {
 const bot1 = schedule.scheduleJob('59 * * * *',() => {
   require('./apiPetitions/bitcoinCompare');
 });
+const bot2 = schedule.scheduleJob('59 * * * *',() => {
+  require('./email/emailNotifications');
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

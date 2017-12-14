@@ -72,6 +72,14 @@ export class BarchartComponent implements OnInit {
 
   barChartLabels: string[] = ['buy', 'sell']
 
+  barChartColors: Array<any> = [
+    { //green
+      backgroundColor: 'rgba(51,205,148,0.8)',
+    },
+    { //purple
+      backgroundColor: 'rgba(97,77,163,0.8)',
+    },
+  ];
 
   barChartType: string = 'bar';
   barChartLegend: boolean = true;

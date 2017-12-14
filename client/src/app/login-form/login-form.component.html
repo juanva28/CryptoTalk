@@ -23,12 +23,29 @@
 
 
 <div *ngIf="auth.user">
-
-<a [routerLink]= '["/userProfile"]'> Your Profile</a>
-  <app-datamodel></app-datamodel>
-  <app-barchart></app-barchart>
-  <app-control-desk></app-control-desk>
-  <app-bitcoin-chart></app-bitcoin-chart>
-  <a href="#" (click)="logout()">Logout {{auth.user.username}}</a>
-
+  <nav class="navbar">
+    <div class="logodiv">
+      <p class="logo">CRYPTO <span class="thin">TALK</span></p>
+    </div>
+    <div class="linksdiv">
+      <a [routerLink]= '["/userProfile"]' class="link"> Your Profile </a>
+      <a href="" class="separator">|</a>
+      <a href="#" (click)="logout()" class="link">Logout <span class="color"> {{auth.user.username}}</span></a>
+    </div>
+</nav>
+<div class="container">
+  <div class="col1"></div>
+  <div class="col2">
+    <app-datamodel></app-datamodel>
+    <div class="gap"></div>
+    <app-barchart></app-barchart>
+  </div>
+  <div class="col4"></div>
+  <div class="col3">
+    <app-control-desk></app-control-desk>
+    <div class="gap"></div>
+    <app-bitcoin-chart></app-bitcoin-chart>
+  </div>
+  <div class="col1"></div>
+</div>
 </div>

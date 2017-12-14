@@ -32,7 +32,7 @@ export class BitcoinChartComponent implements OnInit {
               { data: data.map(e => e.btcPrice), label: "Bitcoin", yAxisID: 'yAxis2'}
             ]
             this.barChartType = 'line';
-            this.barChartLabels = data.map(e => e.time);
+            this.barChartLabels = data.map(e => e.time).reverse();
             break;
           case '2':
         console.log(data);
@@ -41,7 +41,7 @@ export class BitcoinChartComponent implements OnInit {
             { data: data.map(e => e.bitcoinChange), label: "Bitcoin"}
           ]
           this.barChartType = 'bar';
-          this.barChartLabels = data.map(e => e.time);
+          this.barChartLabels = data.map(e => e.time).reverse();
           console.log(this.barChartData);
             console.log(this.barChartLabels)
             break;
@@ -57,6 +57,14 @@ export class BitcoinChartComponent implements OnInit {
         scaleShowVerticalLines: false,
         responsive: true
       };
+      barChartColors: Array<any> = [
+        { //green
+          backgroundColor: 'rgba(51,205,148,0.8)',
+        },
+        { //purple
+          backgroundColor: 'rgba(97,77,163,0.8)',
+        },
+      ];
       barChartLabels: Array<string>;
       barChartLegend: boolean = true;
       chartClicked(e: any): void { console.log(e);}

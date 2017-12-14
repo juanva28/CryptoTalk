@@ -1,28 +1,24 @@
-
-<script src="node_modules/chart.js/Chart.min.js"></script>
+<script src="node_modules/chart.js/Chart.min.js">
+</script>
 <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
 
-    <div style="width: 50%" *ngIf="barChartData">
-
-<h2>Sentiment Analysis</h2>
+<div *ngIf="barChartData">
 
 
-<select [(ngModel)]="timespan">
-    <option value=1 >Last minute</option>
-    <option value=5 >Last five minuets</option>
-    <option value=15>Last fifteen minuets</option>
-    <option value=30>Last thirty minuets</option>
-    <option value=60>Last hour</option>
-</select>
-<button (click)="barChartUpdate()">Apply</button>
-
-
-      <canvas baseChart
-              [datasets]="barChartData"
-                [labels]="barChartLabels"
-                [options]="barChartOptions"
-                [legend]="barChartLegend"
-                chartType="horizontalBar"
-                (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
+  <div class="topbar">
+    <h4>Sentiment Analysis</h4>
+    <div class="selector">
+    <select [(ngModel)]="timespan">
+      <option value=1 >Last minute</option>
+      <option value=5 >Last five minuets</option>
+      <option value=15>Last fifteen minuets</option>
+      <option value=30>Last thirty minuets</option>
+      <option value=60>Last hour</option>
+    </select>
+    <i class="fa fa-check-circle" aria-hidden="true" (click)="barChartUpdate()"></i>
     </div>
+  </div>
+  <div class="graph">
+    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" chartType="horizontalBar" [colors]="barChartColors" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+  </div>
+</div>

@@ -1,22 +1,29 @@
 <script src="node_modules/chart.js/Chart.min.js"></script>
 <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
 
-    <div style="width: 50%" *ngIf="barChartData">
+<div *ngIf="barChartData">
 
-<h2>Ethereum and Bitcoin Movement</h2>
+  <div class="topbar">
+    <h4>Ethereum vs Bitcoin Price Movement</h4>
+<div class="selector">
 <select [(ngModel)]="charttype">
     <option value=1 >Price Chart</option>
     <option value=2 >Percentage change in price chart</option>
 </select>
-<button (click)="barChartUpdate()">Apply</button>
 
+<i class="fa fa-check-circle" aria-hidden="true" (click)="barChartUpdate()"></i>
+</div>
+<div class="graph">
 
       <canvas baseChart
-              [datasets]="barChartData"
+                [datasets]="barChartData"
                 [labels]="barChartLabels"
+                [colors]="barChartColors"
                 [options]="barChartOptions"
                 [legend]="barChartLegend"
                 [chartType]="barChartType"
                 (chartHover)="chartHovered($event)"
                 (chartClick)="chartClicked($event)"></canvas>
+
     </div>
+</div>

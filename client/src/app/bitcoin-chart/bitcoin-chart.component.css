@@ -1,0 +1,40 @@
+.topbar{
+  background-color: rgba(61,77,120, 0.7);
+  margin: 0;
+  border-top-right-radius: 7px;
+  border-top-left-radius: 7px;
+}
+h4{
+  margin: 0;
+  color: #ede8e8;
+  padding-left: 25px;
+  font-weight: lighter;
+  display: inline-block;
+  font-family: sans-serif;
+  line-height: 50px;
+  height: 45px;
+}
+.graph{
+  background-color: #2d3347;
+  border-bottom-right-radius: 14px;
+  border-bottom-left-radius: 7px;
+  height: 400px;
+}
+
+.selector{
+  margin-top: 11px;
+  display: inline-block;
+  float: right;
+  margin-right: 20px;
+  font-family: sans-serif
+}
+select{
+  width: 90px;
+}
+button{
+  width: 20px;
+}
+i{color: #6070a0;
+  font-size: 19px;
+  line-height: 25px;
+}

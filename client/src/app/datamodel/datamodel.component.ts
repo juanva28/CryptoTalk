@@ -51,21 +51,21 @@ export class DatamodelComponent implements OnInit {
   };
 
   lineChartColors: Array<any> = [
-    { // grey
-      backgroundColor: 'rgba(177,219,246,0.2)',
-      borderColor: '#2aa3ef',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
+    { //green
+      backgroundColor: 'rgba(51,205,148,0.1)',
+      borderColor: '#33cd94',
+      pointBackgroundColor: 'rgba(51,205,148,1)',
       pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+      pointHoverBackgroundColor: '#33cd94',
+      pointHoverBorderColor: 'rgba(51,205,148,0.8)'
     },
-    { // dark grey
-      backgroundColor: 'rgba(77,83,96,0.2)',
-      borderColor: 'rgba(77,83,96,1)',
-      pointBackgroundColor: 'rgba(77,83,96,1)',
-      pointBorderColor: '#fff',
+    { //purple
+      backgroundColor: 'rgba(97,77,163,0.2)',
+      borderColor: '#6550b2',
+      pointBackgroundColor: 'rgba(97,67,163,1)',
+      pointBorderColor: '#6550b2',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(77,83,96,1)'
+      pointHoverBorderColor: 'rgba(97,67,163,1)'
     },
   ];
   lineChartLegend: boolean = true;

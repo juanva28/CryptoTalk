@@ -2,7 +2,12 @@
 <script src="node_modules/chart.js/Chart.min.js"></script>
 <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
 
-<div style="width: 60%" *ngIf="lineChartData">
+<div  *ngIf="lineChartData">
+
+<div class="topbar">
+  <h4>Sepculation Analysis</h4>
+</div>
+<div class="graph">
     <canvas baseChart
                 [datasets]="lineChartData"
                 [labels]="lineChartLabels"
@@ -11,5 +16,7 @@
                 [legend]="lineChartLegend"
                 [chartType]="lineChartType"
                 (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
-    </div>
+                (chartClick)="chartClicked($event)">
+    </canvas>
+</div>
+</div>
