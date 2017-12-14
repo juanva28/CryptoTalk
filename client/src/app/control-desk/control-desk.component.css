@@ -1,9 +1,37 @@
-.box{
-  border: 2px solid grey;
-  height: 445px;
+.topbar{
+  background-color: rgba(61,77,120, 0.7);
+  margin: 0;
+  border-top-right-radius: 7px;
+  border-top-left-radius: 7px;
+}
+h4{
+  margin: 0;
+  color: #ede8e8;
+  padding-left: 25px;
+  font-weight: lighter;
+  display: inline-block;
+  font-family: sans-serif;
+  line-height: 50px;
+  height: 45px;
 }
 
-h4{
-  margin: 0 0 0 70px;
-  padding: 0;
+.graph{
+  background-color: #2d3347;
+  border-bottom-right-radius: 14px;
+  border-bottom-left-radius: 7px;
+  height: 374px;
+  padding: 15px;
+}
+
+h2{
+  margin: 0;
+}
+
+.littlebox{
+  width: 90%;
+  background-color: rgba(61,77,120, 0.6);
+  margin-left: 21px;
+  border-radius: 7px;
+  margin-bottom: 25px;
+
 }

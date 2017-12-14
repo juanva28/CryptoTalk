@@ -1,12 +1,23 @@
-<div *ngIf="difference" class="box">
-
-<h3>Last hour analytics</h3>
+<div *ngIf="difference">
+<div class="topbar">
+<h4>Last hour analytics</h4>
+</div>
+<div class="graph">
+  <div class="littlebox">
 <h2>{{google}}%</h2>
 <p><i> % change in google search volume</i></p>
+  </div>
+  <div class="littlebox">
 <h2>{{ethereum}}%</h2>
 <p><i> % change in the volume of ethereum transactions</i></p>
+  </div>
+  <div class="littlebox">
 <h2>{{difference}}%</h2>
 <p><i>Spread between real time speculation and transactions</i></p>
+  </div>
+  <div class="littlebox">
 <h2>{{sentiment}}bsp</h2>
 <p><i>Spread between 'buy oriented' and 'sell orienetd' search sentiment</i></p>
+</div>
+</div>
 </div>
